@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Roboto Slab', 'serif'],
-        'serif': ['Roboto Serif', 'serif'],
+        'sans': ['Open Sans', 'sans-serif'],
+        'serif': ['Playfair Display', 'serif'],
       },
     },
   },

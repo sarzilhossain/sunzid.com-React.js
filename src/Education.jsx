@@ -46,7 +46,7 @@ const EducationCard = ({institute="", title, year, result, grid_rows=3}) => {
     const [ref, inView, entry] = useInView();
     return (
         
-            <div ref={ref} className={`${inView ? `opacity-100 transition-all duration-500` : 'opacity-0'} lg:w-[30rem] lg:h-[10rem] 2xl:w-[45rem] py-3 text-black h-auto rounded-xl grid grid-rows-{grid_rows}
+            <div ref={ref} className={`${inView ? `opacity-100 transition-all duration-500` : 'opacity-0'} w-full lg:w-[30rem] lg:h-[10rem] 2xl:w-[45rem] py-3 text-black h-auto rounded-xl grid grid-rows-{grid_rows}
             mx-auto mx-2 mb-8 bg-white shadow-xl`}>
                 <span className="text-lg xl:text-xl">{institute}</span>
                 <span className="text-xl xl:text-2xl">{title}</span>

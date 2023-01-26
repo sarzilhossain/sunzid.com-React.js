@@ -9,9 +9,9 @@ import Contact from './Contact';
 
 function App() {
   return (
-    <div id="info" className="bg-gray-300 scroll-smooth h-[100%] w-[100%] font-serif">
+    <div id="info" className="bg-gray-300 scroll-smooth h-[100%] w-[100%]">
       <VerticalNavBar/>
-    <div className="flex flex-col items-center pl-40">
+    <div className="flex flex-col items-center px-4 lg:pl-40">
       <Header/>
       <Education/>
       <Experience/>
