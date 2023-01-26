@@ -1,23 +1,20 @@
 import React from 'react';
-
+import { useInView } from 'react-intersection-observer';
 export default function Experience() {
     const honda = {
         job: "Bangladesh Honda Private Ltd.",
         role: "Section Head: Business Planning",
         time: "April 2022 – Ongoing",
-        tasks: [`Developed R programs to organize and analyze data from different value chain activities and to
-    generate reports for diverse stakeholders (github.com/SunzidHassan/BHL)`,
-    `Used inferential statistical tests on time-series data of customer attributes, socio-economic
-    indicators, etc., to forecast trends, seasonal variations, and cycles of product sales.`,
-    `Used Python’s scipy.optimize library to optimize value chain activities like quantity of raw
-    material import, production, distribution, etc. (github.com/SunzidHassan/BHL)`]}
+        tasks: [`Value chain activities Data Analysis (github.com/SunzidHassan/BHL)`,
+    `Time Series inferential data analysis and aorcasting on Product sales data`,
+    `Optimized value chain activities with Python (github.com/SunzidHassan/BHL)`]}
     
     const obboy_labs = {
         job: "Obboy Labs",
         role: "Financial Analyst",
         time: "March 2022 - March 2022",
         tasks: [`Structured equity market data for analysis.`,
-        `Used inferential statistical analysis on equity market data to predict stock market performance.`,
+        `Stock Market performance prediction`,
         `Managed a portfolio of open-ended mutual funds.`]
     }
 
@@ -35,11 +32,12 @@ export default function Experience() {
         time: "April 2018 - March 2020",
         tasks: [`Instructed GRE quantitative reasoning to about 160 students`]
     }
+    const [ref1, inView1, entry1] = useInView();
     return (
         <div id="experience" className="mx-auto my-48 p-10 rounded-lg">
             <div className="text-center font-bold">
                 <div className="titleelem">
-                <span className="underline">Working Experience</span>
+                <span ref={ref1}  className={inView1 ? `opacity-100 transition-all duration-500` : 'opacity-0'}>Working Experience</span>
                 </div>
                 <br/>
                 <br/>
@@ -54,8 +52,9 @@ export default function Experience() {
 }
 
 const ExperienceCard = (props) => {
+    const [ref, inView, entry] = useInView()
     return (
-            <div className="flex flex-col list-none items-center p-4 lg:p-8 bg-white my-8 lg:m-8 rounded-xl m-1 shadow-xl">
+            <div ref={ref} className={`${inView ? `opacity-100 transition-all duration-500` : 'opacity-0'} flex flex-col list-none items-centser p-4 lg:p-8 bg-white my-8 lg:m-8 rounded-xl m-1 shadow-xl`}>
                 <div className='justify-center mx-auto mb-4'>
                     <span className="lg:text-2xl block text-gray-800">{props.job}</span>
                     <span className="lg:text-2xl font-bold block font-serif">{props.role}</span>

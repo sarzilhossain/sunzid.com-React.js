@@ -4,14 +4,15 @@
 
 @layer components {
     .navelem {
-        @apply border-4
-        border-black
-        mt-1 mb-2 p-2 rounded-xl
+        @apply
+        border-black border-2
+        rounded-xl
+        justify-center
         text-black cursor-pointer uppercase
-        font-bold text-lg
-      bg-white text-center
-        transition-all duration-500
-        hover:translate-x-2
+        font-bold text-sm
+        bg-white text-center
+        transition-all duration-500 hover:translate-x-2
+        p-2
        ;
     }
 
@@ -20,13 +21,5 @@
     }
     .titleelem {
         @apply text-center text-2xl md:text-3xl lg:text-5xl 2xl:text-6xl font-bold;
-    }
-
-    .hide {
-        opacity: 0;
-    }
-
-    .show {
-        opacity: 1;
     }
 }
