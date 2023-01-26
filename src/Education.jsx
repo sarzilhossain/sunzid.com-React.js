@@ -1,14 +1,17 @@
 import React from 'react';
+import {useInView} from "react-intersection-observer";
 
 export default function Education() {
+    const [ref1, inView1, entry1] = useInView()
+    const [ref2, inView2, entry2] = useInView()
     return (
         <div id="education" className="mx-auto my-48 p-10 rounded-lg">
             <div className="titleelem">
-                <span className="underline">Educational Background</span>
+                <span ref={ref1} className={inView1 ? `opacity-100 transition-all duration-500` : 'opacity-0'}>Educational Background</span>
                 <br/>
                 <br/>
                 <br/>
-                <div className="flex flex-col items-center lg:grid lg:grid-cols-2 lg:grid-rows-2 mx-auto">
+                <div className="flex flex-col items-center lg:grid lg:grid-cols-2 lg:grid-rows-2">
                     <EducationCard title="Master of Business Administration"
                     institute="IBA, University of Dhaka" year="2019" result="CGPA: 3.6/4.00"/>
                     <EducationCard title="Bachelor of Urban and Regional Planning"
@@ -22,7 +25,7 @@ export default function Education() {
                 <br/>
             </div>
             <div className="mt-36 text-center text-3xl font-bold"></div>
-                    <span className="underline">Course Certifications</span>
+                    <span ref={ref2} className={inView2 ? `opacity-100 transition-all duration-500` : 'opacity-0'}>Course Certifications</span>
                     <br/>
                     <br/>
                     <br/>
@@ -40,10 +43,11 @@ export default function Education() {
 }
 
 const EducationCard = ({institute="", title, year, result, grid_rows=3}) => {
+    const [ref, inView, entry] = useInView();
     return (
         
-            <div className=" lg:w-[30rem] lg:h-[10rem] 2xl:w-[45rem] py-3 text-black h-auto rounded-xl grid grid-rows-{grid_rows}
-            mx-auto mx-2 mb-8 bg-white shadow-xl">
+            <div ref={ref} className={`${inView ? `opacity-100 transition-all duration-500` : 'opacity-0'} w-full lg:w-[30rem] lg:h-[10rem] 2xl:w-[45rem] py-3 text-black h-auto rounded-xl grid grid-rows-{grid_rows}
+            mx-auto mx-2 mb-8 bg-white shadow-xl`}>
                 <span className="text-lg xl:text-xl">{institute}</span>
                 <span className="text-xl xl:text-2xl">{title}</span>
                 <span className="text-base xl:text-xl">Passing Year: {year} | {result}</span>
@@ -52,13 +56,11 @@ const EducationCard = ({institute="", title, year, result, grid_rows=3}) => {
 }
 
 const CertificateCard = ({img, url, title}) => {
+    const [ref, inView, entry] = useInView();
     return (
-        <div className="group relative w-fit flex flex-col h-auto mx-auto items-center justify-end soverflow-hidden">
+        <div ref={ref} className={`${inView ? `opacity-100 transition-all duration-500` : 'opacity-0'} w-fit flex flex-col h-auto mx-auto items-center justify-end soverflow-hidden`}>
                 <div>
-                    <a href={url}><img className="rounded-xl border-2 border-black shadow-xl my-4 mx-auto transition-all duration-500 hover:h-full hover:w-full w-[60rem] object-cover" src={img}></img></a>
-                </div>
-                <div className="group-hover:hidden text-sm lg:text-xl transition-all duration-500 bg-black opacity-75 text-white bottom-4 absolute mx-auto w-full uppercase bold rounded-b ">
-                    <span>{title}</span>
+                    <a href={url}><img className="rounded-xl border-2 border-black shadow-xl my-4 mx-auto transition-all duration-500 hover:w-[61rem] w-[60rem] object-cover" src={img}></img></a>
                 </div>
         </div>
     );

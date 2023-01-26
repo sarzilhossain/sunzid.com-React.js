@@ -1,11 +1,12 @@
 import React from 'react';
 import {BsFacebook, BsLinkedin, BsGithub} from "react-icons/bs";
-
+import { useInView } from 'react-intersection-observer';
 export default function Contact() {
+    const [ref1, inView1, entry1] = useInView();
     return (
-        <div id="contact" className="flex flex-col items-center justify-center mx-auto mt-48 p-10 rounded-lg">
+        <div ref={ref1} id="contact" className={`${inView1 ? "opacity-100 transition-all duration-500" : 'opacity-0'} flex flex-col items-center justify-center mx-auto mt-48 p-10 rounded-lg`}>
             <div className="titleelem">
-                <span className="underline">Contact</span>
+                <span className="">Contact</span>
                 <br/>
                 <br/>
                 <br/>
@@ -25,10 +26,10 @@ const ContactInfo = () => {
         <div className="flex flex-col items-center p-4 lg:p-8 bg-white my-8 lg:m-8 rounded-xl shadow-xl">
             <div className="lg:w-[50rem]">
                 <div className="py-8">
-                    <span className="text-sm lg:text-4xl text-gray-700 block">Email Address: </span><span className="text-lg lg:text-2xl font-bold">sunzidhassan@gmail.com</span>
+                    <span className="text-sm lg:text-4xl text-gray-700 block">Email Address: </span><a href="mailto:sunzidhassan@gmail.com" className="text-lg lg:text-2xl font-bold underline decoration-gray-500">sunzidhassan@gmail.com</a>
                 </div>
                 <div className='py-8'>
-                    <span className="text-sm lg:text-4xl text-gray-700 block" >Phone Number: </span><span className="text-lg lg:text-2xl font-bold">+8801521100604</span>
+                    <span className="text-sm lg:text-4xl text-gray-700 block" >Phone Number: </span><a href="tel:+8801521100604" className="text-lg lg:text-2xl font-bold underline decoration-gray-500">+8801521100604</a>
                 </div>
             </div>
         </div>
